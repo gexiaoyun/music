@@ -1,0 +1,24 @@
+@import './public.less';
+
+.px2vw(@width,@height){
+    width: @width/750*100vw;
+    height: @height/750*100vw;
+}
+.head{
+    background: red;
+    .px2vw(750, 208);
+    .head-search{
+        .px2vw(750, 60);
+        margin-top: 52/750*100vw;
+    }
+    span,p{
+        float: left;
+    };
+    span{
+        display: inline-block;
+    }
+    .musicIcon{
+        color: #fff;
+        .px2vw(46, 46)
+    }
+}

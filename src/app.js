@@ -1,6 +1,5 @@
 import React from 'react';
-import './less/app';
-import Main from './component/Main'
+import Main from './component/main/Main'
 
 class App extends React.Component {
     constructor(props) {
