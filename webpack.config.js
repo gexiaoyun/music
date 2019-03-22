@@ -1,51 +1,29 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const cleanWebpackPlugin = require('clean-webpack-plugin');
-
-
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+    template: path.join(__dirname, "./example/src/index.html"),
+    filename: "./index.html"
+});
+ 
 module.exports = {
-    entry: {
-        app: './src/index.js'
+    entry: path.join(__dirname, "./example/src/index.js"),
+    output: {
+        path: path.join(__dirname, "example/dist"),
+        filename: "bundle.js"
     },
-    output:{
-        filename:'bundle.[hash].js',
-        path: path.join(__dirname, '/dist') 
+    module: {
+        rules: [{
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: "babel-loader",
+            exclude: /node_modules/
+        }]
     },
-    resolve:{
-        extensions:['.js','.jsx','.less']
+    plugins: [htmlWebpackPlugin],
+    resolve: {
+        extensions: [".js", ".jsx"]
     },
-    module:{
-        rules:[
-            {
-                test:/\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use:{
-                    loader:"babel-loader"
-                }
-            },
-            {
-                test: /\.less$/,
-                use:[
-                    'style-loader','css-loader','less-loader'
-                ]
-            },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    plugins:[
-        new htmlWebpackPlugin({
-            template: './src/template/index.html'
-        }),
-        new cleanWebpackPlugin(['dist'])
-    ]
-}
+    // devServer: {
+    //     port: 3001
+    // }
+};

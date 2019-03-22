@@ -1,6 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app'
 
-
-ReactDOM.render(<App />, document.getElementById('App'));
+export default class FirstButton extends React.Component {
+    render () {
+        return (
+             <button>知乎</button>
+        );
+    }
+}
