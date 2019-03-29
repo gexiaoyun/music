@@ -9,7 +9,8 @@ module.exports = {
     entry: path.join(__dirname, "./example/src/index.js"),
     output: {
         path: path.join(__dirname, "example/dist"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        libraryTarget: 'commonjs2' 
     },
     module: {
         rules: [{
@@ -17,13 +18,16 @@ module.exports = {
             exclude: /node_modules/,
             use: "babel-loader",
             exclude: /node_modules/
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
         }]
     },
     plugins: [htmlWebpackPlugin],
     resolve: {
         extensions: [".js", ".jsx"]
     },
-    // devServer: {
-    //     port: 3001
-    // }
+    devServer: {
+        port: 3001
+    }
 };
