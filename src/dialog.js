@@ -3,31 +3,25 @@ import './index.css';
 
 class Dialog extends React.Component {
     render () {
-        const { 
-            title,
-            footer,
-            onOk,
-            onCancel,
-            maskOpen
-         } = this.props;
+        const props = this.props;
         return (
             <div>
-                {maskOpen ? <div className="mask"/> : null}
+                {props.maskOpen ? <div className="mask"/> : null}
                 <div className="dialog">
                     <div 
                         className="g-modal"
                     >
                         <div className="g-modal-header">
-                            {title ? title : `Modal`}
+                            {props.title ? props.title : `Modal`}
                         </div>
                         <div className="g-modal-body">
-                            沙发舒服撒到发疯 阿萨德撒
+                            {props.children}
                         </div>
                         {
-                            footer === true ? 
+                            props.footer === true ? 
                             <div className="g-modal-footer">
-                                <button onClick={onOk}>ok</button>
-                                <button onClick={onCancel}>cancel</button>
+                                <button onClick={props.onOk}>ok</button>
+                                <button onClick={props.onCancel}>cancel</button>
                             </div>
                             :
                             null
