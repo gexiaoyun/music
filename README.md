@@ -2,7 +2,7 @@ Demo
 ```
 
 <FirstButton 
-    visible={buttonShow}
+    visible={true}
     maskOpen={true}
     onOk={this.ok}
     onCancel={this.cancel}
@@ -10,7 +10,7 @@ Demo
 />
 
 <FirstButton 
-    visible={buttonShow}
+    visible={true}
     maskOpen={true}
     onOk={this.ok}
     onCancel={this.cancel}
@@ -21,4 +21,5 @@ Demo
     <p>test</p>
     <p>test</p>
 </FirstButton>
+
 ```
