@@ -4,13 +4,21 @@ import './index.css';
 
 class Dialog extends React.Component {
 
+    maskClosable = (e) => {
+        const props = this.props;
+        if (props.maskClose !== false) {
+            if (e.target === e.currentTarget) {
+                props.onCancel();
+              }
+        }
+    }
 
     getMaskElement = () => {
         const props = this.props;
         let maskElement;
-        if (props.maskOpen !== false) {
+        if (props.maskOpen && props.maskOpen !== false) {
             maskElement = (
-               <div className="mask"/> 
+               <div className="mask" /> 
             ) 
         }
         return maskElement
@@ -40,8 +48,8 @@ class Dialog extends React.Component {
         if (props.footer !== false ) {
             footerElement = (
                 <div className="g-modal-footer">
-                    <button onClick={props.onOk}>{props.okText || 'ok'}</button>
-                    <button onClick={props.onCancel}>{props.cancelText || 'cancel'}</button>
+                    <button className="modal-submit" onClick={props.onOk}>{props.okText || 'ok'}</button>
+                    <button className="modal-cancel" onClick={props.onCancel}>{props.cancelText || 'cancel'}</button>
                 </div>
             )
         }
@@ -57,8 +65,6 @@ class Dialog extends React.Component {
                 </div>
                 {footerElement}
             </div>
-        
-
         )
     }
 
@@ -67,7 +73,9 @@ class Dialog extends React.Component {
         return (
             <div>
                 {this.getMaskElement()}
-                <div className="dialog">
+                <div className="dialog"
+                     onClick={(e) => {this.maskClosable(e); }}
+                >
                    {this.getDialogElement()}
                 </div>
             </div>
@@ -79,6 +87,7 @@ export default Dialog;
 
 Dialog.prototypes = {
     maskOpen: PropTypes.bool,
+    maskClose: PropTypes.bool,
     header: PropTypes.bool,
     title: PropTypes.string,
     footer: PropTypes.oneOfType([

@@ -1,3 +1,5 @@
+基于react 模仿rc-component/dialog 写的一个弹出框
+
 ## DEMO:
 ```
 <Modal 
