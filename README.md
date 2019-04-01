@@ -1,25 +1,35 @@
-Demo
+## DEMO:
 ```
-
-<FirstButton 
+<Modal 
     visible={true}
     maskOpen={true}
     onOk={this.ok}
     onCancel={this.cancel}
-    footer={true}
 />
 
-<FirstButton 
+<Modal 
     visible={true}
     maskOpen={true}
     onOk={this.ok}
     onCancel={this.cancel}
-    footer={true}
 >
     <p>test</p>
     <p>test</p>
     <p>test</p>
     <p>test</p>
-</FirstButton>
-
+</Modal>
 ```
+## parameter:
+参数 | 说明 | 类型 | 默认值
+----|------|----|----
+maskOpen | 是否开启遮罩层  | Boolean | true
+header | 是否显示头部  | Boolean | true
+title | 头部显示文字  | string | 'Modal'
+footer | 是否显示底部 | Boolean | true
+onOk | 确定按钮点击事件 | function | 无
+onCancel | 取消按钮点击事件 | function | on
+width | 宽度 | string | '778px'
+height | 高度 | string | '53px'
+okText | 确定按钮文字 | string | 'ok'
+cancelText | 取消按钮文字 | string | 'cancel'
+
