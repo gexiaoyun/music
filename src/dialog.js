@@ -16,7 +16,7 @@ class Dialog extends React.Component {
     getMaskElement = () => {
         const props = this.props;
         let maskElement;
-        if (props.maskOpen && props.maskOpen !== false) {
+        if ( props.maskOpen !== false) {
             maskElement = (
                <div className="mask" /> 
             ) 
